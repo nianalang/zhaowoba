@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- mybatis的主配置文件 -->
+
+	<!-- 配置全局属性 -->
+	<settings>
+		<!-- 使用jdbc的getGeneratedKeys 获取数据库自增主键 -->
+		<!-- <setting name="useGeneratedKeys" value="true" /> -->
+
+		<!-- 使用列别名替换列名 -->
+		<!-- <setting name="userColumnLable" value="true" /> -->
+
+		<!-- 开启驼峰命名转换 -->
+		<!-- <setting name="mapUnderscoreToCamelCase" value="true" /> -->
+
+		<!-- 打开延迟加载的开关 -->
+		<setting name="lazyLoadingEnabled" value="true" />
+
+		<!-- 将积极加载改为消极加载，即延迟加载 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+
+		<!-- 开启二级缓存 -->
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+
+	<!-- 配置别名 -->
+	<typeAliases>
+		<package name="com.zhaowoba.entity" />
+	</typeAliases>
+
+
+	<!-- mapper这里不需要配置了，因为跟spring整合后
+	 在spring那边会进行mapper的扫描 但必须遵循：
+	  mapper.xml和mapper.java必须同名且在一个目录 -->
+	  <mappers>
+	  	<mapper resource="mapper/UsersDao.xml" />
+	  	<mapper resource="mapper/PostDataDeliveryDao.xml" />
+	  </mappers>
+	  
+</configuration>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhaowoba.dao.PostDataDeliveryDao">
+	<!-- 用户发布信息 -->
+	<insert id="postDeliveryMessage"
+		parameterType="postDataDelivery">
+		insert into post_data_delivery(
+		post_data_person_phone,
+		post_data_users_phone,
+		post_data_delivery_name,
+		post_data_delivery_message,
+		post_data_delivery_address,
+		post_data_replace_price
+		)
+		values(#{post_data_person_phone},
+		#{post_data_users_phone},#{post_data_delivery_name},#{post_data_delivery_message},
+		#{post_data_delivery_address},#{post_data_replace_price})
+	</insert>
+
+	<select id="queryDataMessage" parameterType="java.lang.String"
+		resultType="postDataDelivery">
+		select
+		post_data_person_phone,
+		post_data_delivery_name,
+		post_data_delivery_message,
+		post_data_delivery_address,
+		post_data_replace_price
+	from where post_data_delivery
+		post_data_users_phone=#{post_data_users_phone}
+	</select>
+	
+	<!--  -->
+	<select id="queryAllDataMessage" resultType="postDataDelivery">
+	select
+		post_data_person_phone,post_data_users_phone,post_data_delivery_name,post_data_delivery_message,
+		post_data_delivery_address,post_data_replace_price
+	from post_data_delivery
+	</select>
+</mapper>

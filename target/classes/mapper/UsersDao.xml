@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.zhaowoba.dao.UsersDao">
+	<!-- 添加一名用户 -->
+	<insert id="insertUsers"  parameterType="users">
+		insert into users(users_phone,users_password,users_sex,users_credit)
+		values(#{users_phone},#{users_password},#{users_sex},#{users_credit})
+	</insert>
+	
+	<!-- 根据用户名查询密码 -->
+	<select id="queryPasswordByUserName" parameterType="simplifyUsers" resultType="java.lang.String">
+		select users_password from users  where users_phone=#{users_phone}
+	</select>
+	
+	<!-- 重置密码 -->
+	<update id="resetPassword"  parameterType="simplifyUsers" >
+		update users set users_password=#{users_password} where users_phone=#{users_phone}
+	</update>
+</mapper>
